@@ -1,3 +1,6 @@
+
+/*eslint linebreak-style: ["error", "unix"]*/
+/*eslint angular/log: 2*/
 var express = require('express');
 var path =require("path");
 var app = express();
