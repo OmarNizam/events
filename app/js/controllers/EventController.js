@@ -15,7 +15,7 @@ eventsApp.controller('EventController',
       sessions: [
                   {
               id: 1,
-                      name: "Directives Masterclass",
+                      name: "Directives Masterclass Introductory",
                       creatorName: "Bob Smith",
                       duration: 1,
                       level: "Advanced",
@@ -29,7 +29,7 @@ eventsApp.controller('EventController',
                       duration: 3,
                       level: "Introductory",
                       abstract: "This session will take a closer look at scopes.  Learn what they do, how they do it, and how to get them to do it for you.",
-                      upVoteCount: 3
+                      upVoteCount: 0
                   },
                   {
               id: 3,
@@ -38,9 +38,20 @@ eventsApp.controller('EventController',
                       duration: 2,
                       level: "Intermediate",
                       abstract: "Controllers are the beginning of everything Angular does.  Learn how to craft controllers that will win the respect of your friends and neighbors.",
-                      upVoteCount: 2
+                      upVoteCount: 0
                   }
                 ]
               }
-            }
-          );
+
+    $scope.upVoteSession = function(session) {
+       session.upVoteCount++;
+    }
+
+    $scope.downVoteSession = function(session) {
+       sessionb.upVoteCount--;
+    }
+
+    $scope.sortorder = 'name';
+
+  }
+);

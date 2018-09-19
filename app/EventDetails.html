@@ -19,7 +19,7 @@
         <img ng-src="{{event.imageUrl}}" alt="{{event.imageUrl}}"/>
         <div class="row">
           <div class="spann11">
-            <h2>{{event.name}}</h2>
+            <h2>{{event.name | uppercase}}</h2>
           </div>
         </div>
         <div class="row">
@@ -36,10 +36,35 @@
             </div>
         </div>
         <hr />
+        <!-- Filter -->
         <h3>Sessions</h3>
-        <lu class="thumbnails">
-          <li ng-repeat="session in event.sessions">
+        Order By:
+        <select ng-model="sortorder" class="input-small">
+          <option selected value="name">Name</option>
+          <option value="-upVoteCount">Votes</option>
+        </select>
+
+        <select ng-model="query.level" class="input-medium">
+          <option selected value="">All</option>
+          <option selected value="Introductory">Introductory</option>
+          <option selected value="Advanced">Advanced</option>
+          <option selected value="Intermediate">Intermediate</option>
+        </select>
+
+        <ul class="thumbnails">
+          <li ng-repeat="session in event.sessions | orderBy:sortorder | filter:query">
             <div class="row session">
+              <div class="span0 well vottingWidget">
+                <div class="vottingButton" ng-click="upVoteSession(session)">
+                  <i class="icon-chevron-up icon-white"></i>
+                </div>
+                <div class="badge badge-inverse">
+                    <div> {{session.upVoteCount}} </div>
+                </div>
+                <div class="vottingButton" ng-click="downVoteSession(session)">
+                  <i class="icon-chevron-down"></i>
+                </div>
+              </div>
               <div class="well span9">
                 <h4 class="well-title">{{session.name}}</h4>
                 <h6 style="margin-top:-10px">{{session.creatorName}}</h6>
@@ -52,7 +77,7 @@
 
             </div>
           </li>
-        </lu>
+        </ul>
 
       </div>
   </div>
