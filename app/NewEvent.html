@@ -21,14 +21,14 @@
       <div class="container">
         <h1>New Event</h1>
         <hr />
-        <form class="" action="index.html" method="post">
+        <form name="newEventForm">
           <fieldset>
             <label for="eventName">Event Name:</label>
-            <input id="eventName" type="text" ng-model="event.name" placeholder="Name of your event ...">
+            <input id="eventName" type="text" ng-model="event.name" required placeholder="Name of your event ...">
             <label for="eventDate">Event Date:</label>
-            <input id="eventDate" type="date" ng-model="event.date" placeholder="Date of your event ...">
+            <input id="eventDate" type="text" ng-model="event.date" required  ng-pattern="/\d\d/\d\d/\d\d\d\d/" placeholder="Date of your event ...">
             <label for="eventTime">Event Time:</label>
-            <input id="eventTime" type="text" ng-model="event.time" placeholder="Time of your event ...">
+            <input id="eventTime" type="time" ng-model="event.time" placeholder="Time of your event ...">
             <label for="eventLocation">Location Name:</label>
             <input id="eventLocation" type="text" ng-model="event.location.address" placeholder="Location of your event ...">
             <br>
@@ -44,8 +44,8 @@
           <br/>
           <br/>
 
-          <button type="submit" class="btn btn-primary">Save</button>
-          <button type="button" class="btn btn-default">Cancel</button>
+          <button type="submit" class="btn btn-primary" ng-click="saveEvent(event, newEventForm)">Save</button>
+          <button type="button" class="btn btn-default" ng-click="cancelEdit()">Cancel</button>
 
         </form>
       </div>
