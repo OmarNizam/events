@@ -1,12 +1,15 @@
 
-/*eslint linebreak-style: ["error", "unix"]*/
-/*eslint angular/log: 2*/
 var express = require('express');
 var path =require("path");
+// var events = require("./eventsController");
 var app = express();
 var rootPath = path.normalize(__dirname + '/../');
 
 app.use(express.static(rootPath +'/app'));
+
+app.get('/data/event/:id', events.get);
+app.post('/data/event/:id', events.post);
+
 
 app.listen(8000);
 console.log("Listening on port 8000 ...");
